@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { checkValidateData } from '../utilis/validate'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../utilis/firbase'
 
 const Login = () => {
 
@@ -20,6 +22,19 @@ const Login = () => {
             if(userName.current.name !== '' && email.current.value !== '' && password.current.value !== ''){
                 const message = checkValidateData(email.current.value, password.current.value, userName.current.name, signUp)
                 setErrorMessage(message)
+                if(message===null){
+                    createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+                        .then((userCredential) => {
+                            // Signed up 
+                            const user = userCredential.user;
+                            console.log(user)
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            setErrorMessage(errorCode+"-"+errorMessage)
+                        });
+                }
             }else{
                 setErrorMessage("Please fill the deatails.")
             }
@@ -27,6 +42,19 @@ const Login = () => {
             if(email.current.value !== '' && password.current.value !== ''){
                 const message = checkValidateData(email.current.value, password.current.value)
                 setErrorMessage(message)
+                if(message===null){
+                    signInWithEmailAndPassword(auth, email, password)
+                        .then((userCredential) => {
+                            // Signed in 
+                            const user = userCredential.user;
+                            console.log(user)
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            setErrorMessage(errorCode+'-'+errorMessage)
+                        });
+                }
             }else{
                 setErrorMessage("Please fill the deatails.")
             }
