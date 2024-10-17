@@ -1,10 +1,13 @@
 
 import './App.css';
+import Body from './components/Body';
+import Header from './components/Header';
 
 function App() {
   return (
-    <div className="bg-black text-3xl text-white">
-      Let Beging th Netflix gpt
+    <div className="">
+      <Header/>
+      <Body/>
     </div>
   );
 }
