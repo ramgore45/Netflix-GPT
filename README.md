@@ -10,6 +10,11 @@
 -firebase setup (install firebase, install firebase tools, init firebase)
 -deploy/Host appp to production
 -create sign up user account in FireBase
+-implemented sign IN user account in FireBase
+-created Redux Store(appStore), userSlice
+-BUGFIX = 
+    -userName update,
+    -if user Login then only redirect to '/browse' else redirect to '/'
 
 # Features
 -landing page(without login)

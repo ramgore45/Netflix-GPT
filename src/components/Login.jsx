@@ -1,12 +1,17 @@
 import React, { useRef, useState } from 'react'
 import { checkValidateData } from '../utilis/validate'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { auth } from '../utilis/firbase'
+import { useDispatch } from 'react-redux'
+import { addUser } from '../utilis/redux/userSlice'
+import Header from './Header'
 
 const Login = () => {
 
     const [signUp, setSignUp] = useState(false)
     const [errorMessage, setErrorMessage] = useState(null)
+
+    const dispatch = useDispatch()
 
     // referce the HTML tag, element
     const email = useRef(null)
@@ -16,18 +21,36 @@ const Login = () => {
     const handleButtonClick = (e)=>{
         // email= give a object of ref object => current => value
         // // console.log("email", email)
+        // console.log("userName", userName.current.value)
         // console.log("email", email.current.value)
         // console.log("password", password.current.value)
         if(signUp){
-            if(userName.current.name !== '' && email.current.value !== '' && password.current.value !== ''){
+            if(userName.current.value !== '' && email.current.value !== '' && password.current.value !== ''){
                 const message = checkValidateData(email.current.value, password.current.value, userName.current.name, signUp)
                 setErrorMessage(message)
                 if(message===null){
-                    createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+                    return createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
                         .then((userCredential) => {
                             // Signed up 
                             const user = userCredential.user;
-                            console.log(user)
+                            // console.log(user)
+                            updateProfile(user,{
+                                displayName:userName.current.value
+                            })
+                                .then(()=>{
+                                    // taking value from current user login or signup
+                                    const {uid, email, displayName} = auth.currentUser
+                                    dispatch(
+                                        addUser({
+                                            uid:uid,
+                                            email:email,
+                                            displayName:displayName
+                                        })
+                                    )
+                                })
+                                .catch((error)=>
+                                    setErrorMessage(error.message)
+                                )
                         })
                         .catch((error) => {
                             const errorCode = error.code;
@@ -36,18 +59,27 @@ const Login = () => {
                         });
                 }
             }else{
-                setErrorMessage("Please fill the deatails.")
+                return setErrorMessage("Please fill all the deatails.")
             }
         }else{
             if(email.current.value !== '' && password.current.value !== ''){
                 const message = checkValidateData(email.current.value, password.current.value)
                 setErrorMessage(message)
                 if(message===null){
-                    signInWithEmailAndPassword(auth, email, password)
+                    return signInWithEmailAndPassword(auth, email.current.value, password.current.value)
                         .then((userCredential) => {
                             // Signed in 
                             const user = userCredential.user;
-                            console.log(user)
+                            // console.log(user)
+                            // taking value from current user login or signup
+                            const {uid, email, displayName} = auth.currentUser
+                            dispatch(
+                                addUser({
+                                    uid:uid,
+                                    email:email,
+                                    displayName:displayName
+                                })
+                            )
                         })
                         .catch((error) => {
                             const errorCode = error.code;
@@ -56,13 +88,14 @@ const Login = () => {
                         });
                 }
             }else{
-                setErrorMessage("Please fill the deatails.")
+                return setErrorMessage("Please fill the deatails.")
             }
         }
     }
 
   return (
     <div className='text-white'>
+        <Header/>
         <img className='w-screen min-h-screen h-fit'
             src='https://assets.nflxext.com/ffe/siteui/vlv3/f272782d-cf96-4988-a675-6db2afd165e0/web/IN-en-20241008-TRIFECTA-perspective_b28b640f-cee0-426b-ac3a-7c000d3b41b7_small.jpg' alt='bg-img'
         />
