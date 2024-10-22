@@ -15,6 +15,14 @@
 -BUGFIX = 
     -userName update,
     -if user Login then only redirect to '/browse' else redirect to '/'
+-unsubcribe the onAuthStateChange callback
+-constant.js
+-TMDB registeration
+-Fetch API for nowPlayingMovies
+-custom hooks=
+    - nowPlayingMovies
+    - moviesTrailer
+-movieSlice created in redux
 
 # Features
 -landing page(without login)

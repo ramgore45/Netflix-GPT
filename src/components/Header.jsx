@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { auth } from '../utilis/firbase'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser, removeUser } from '../utilis/redux/userSlice'
+import { LOGO } from '../utilis/constants'
 
 const Header = () => {
 
@@ -24,7 +25,7 @@ const Header = () => {
   }
 
   useEffect(()=>{
-    onAuthStateChanged(auth, (user) => {
+    const unsubcribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
@@ -43,12 +44,15 @@ const Header = () => {
         navigate('/')
       }
     });
+
+    // unMount when  there is no header or need
+    return ()=> unsubcribe();
   },[])
 
   return (
-    <div className='absolute z-10 flex justify-between w-full bg-gradient-to-b from-black px-10 shadow-lg py-2'>
+    <div className='absolute z-20 flex justify-between w-full bg-gradient-to-b from-black px-10 shadow-lg py-2'>
         <img className='w-44' 
-            src='https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png' alt='netflix-logo'
+            src={LOGO} alt='netflix-logo'
         />
 
         {user !== null &&

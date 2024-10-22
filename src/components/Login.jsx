@@ -5,6 +5,7 @@ import { auth } from '../utilis/firbase'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../utilis/redux/userSlice'
 import Header from './Header'
+import { USER_AVATAR } from '../utilis/constants'
 
 const Login = () => {
 
@@ -35,16 +36,18 @@ const Login = () => {
                             const user = userCredential.user;
                             // console.log(user)
                             updateProfile(user,{
-                                displayName:userName.current.value
+                                displayName:userName.current.value,
+                                photoURL: USER_AVATAR
                             })
                                 .then(()=>{
                                     // taking value from current user login or signup
-                                    const {uid, email, displayName} = auth.currentUser
+                                    const {uid, email, displayName, photoURL} = auth.currentUser
                                     dispatch(
                                         addUser({
                                             uid:uid,
                                             email:email,
-                                            displayName:displayName
+                                            displayName:displayName,
+                                            photoURL:photoURL
                                         })
                                     )
                                 })
@@ -72,12 +75,13 @@ const Login = () => {
                             const user = userCredential.user;
                             // console.log(user)
                             // taking value from current user login or signup
-                            const {uid, email, displayName} = auth.currentUser
+                            const {uid, email, displayName, photoURL} = user
                             dispatch(
                                 addUser({
                                     uid:uid,
                                     email:email,
-                                    displayName:displayName
+                                    displayName:displayName,
+                                    photoURL:photoURL
                                 })
                             )
                         })
