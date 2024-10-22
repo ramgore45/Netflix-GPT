@@ -56,7 +56,7 @@ const Header = () => {
         />
 
         {user !== null &&
-          <button 
+          <button className='text-white'
             onClick={handleSignOut}
           >
             Sign Out

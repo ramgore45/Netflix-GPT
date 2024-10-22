@@ -10,13 +10,14 @@ const MainContainer = () => {
     // early return (!nowPlayingMovies)
     if(nowPlayingMovies === null ) return (<h1>No Movies</h1>);
 
-    const mainMovie = nowPlayingMovies[0];
+    const randomIndex = Math.floor(Math.random() * nowPlayingMovies.length);
+    const mainMovie = nowPlayingMovies[randomIndex];
     console.log(mainMovie)
 
     const {original_title, overview, id} = mainMovie
 
   return (
-    <div>
+    <div className='relative'>
         <VideoBackground movieId={id}/>
         <VideoTitle title={original_title} description={overview}/>
     </div>

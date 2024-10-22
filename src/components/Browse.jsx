@@ -1,12 +1,15 @@
 import React from 'react'
 import Header from './Header';
-import { useNowPlayingMovies } from '../customHooks/useMoviesHooks';
+import { useNowPlayingMovies, usePopularMovies, useTopRatedMovies, useUpcomingMovies } from '../customHooks/useMoviesHooks';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
 
 const Browse = () => {
   // created custom hook for fethching nowPlayingMovies and store in movieSlice
   useNowPlayingMovies()
+  usePopularMovies()
+  useUpcomingMovies()
+  useTopRatedMovies()
 
   return (
     <div>

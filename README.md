@@ -19,10 +19,24 @@
 -constant.js
 -TMDB registeration
 -Fetch API for nowPlayingMovies
--custom hooks=
-    - nowPlayingMovies
-    - moviesTrailer
 -movieSlice created in redux
+-custom hooks=
+    - useNowPlayingMovies() = update nowPlayingMovies in movies store
+    - useGetTrailerOfMovie = update trailer in movies store
+-browse page
+    -mainContainer
+        -videoBackground,
+        -videoTitle
+    -secondary container
+        -movieList component
+        -movieCard
+        -found out IMG TMDB URL
+-movieSlice=>
+    -upcomingMovie, topRatedMovies, popularMovies
+-useMOviesHook =>
+            -usePopularMovies
+            -useTopRatedMovies
+            -useUpcomingmovies
 
 # Features
 -landing page(without login)
