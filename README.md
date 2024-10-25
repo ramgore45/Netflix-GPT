@@ -37,6 +37,11 @@
             -usePopularMovies
             -useTopRatedMovies
             -useUpcomingmovies
+-GPT Page =>
+    -Gpt Search bar
+    -gptSlice, configSlice
+    -feature = Multi Languages Selction In Header
+
 
 # Features
 -landing page(without login)

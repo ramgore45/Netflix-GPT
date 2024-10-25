@@ -5,7 +5,7 @@ import { auth } from '../utilis/firbase'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../utilis/redux/userSlice'
 import Header from './Header'
-import { USER_AVATAR } from '../utilis/constants'
+import { BackgroundImgUrl, USER_AVATAR } from '../utilis/constants'
 
 const Login = () => {
 
@@ -101,7 +101,7 @@ const Login = () => {
     <div className='text-white'>
         <Header/>
         <img className='w-screen min-h-screen h-fit'
-            src='https://assets.nflxext.com/ffe/siteui/vlv3/f272782d-cf96-4988-a675-6db2afd165e0/web/IN-en-20241008-TRIFECTA-perspective_b28b640f-cee0-426b-ac3a-7c000d3b41b7_small.jpg' alt='bg-img'
+            src={BackgroundImgUrl} alt='bg-img'
         />
 
         <form className='p-14 px-16 space-y-10 bg-black bg-opacity-70 absolute w-[35%] mx-auto top-[20%] left-0 right-0 z-0 rounded-3xl'

@@ -5,10 +5,14 @@ import { auth } from '../utilis/firbase'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser, removeUser } from '../utilis/redux/userSlice'
 import { LOGO } from '../utilis/constants'
+import { toggleGptSearchView } from '../utilis/redux/gptSlice'
+import { SUPPORTED_LANG } from '../utilis/langConstants'
+import { changeLang } from '../utilis/redux/configSlice'
 
 const Header = () => {
 
   const user = useSelector((store)=>store.user)
+  const showGptSearch = useSelector((store)=> store.gpt.showGptSearch)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -22,6 +26,15 @@ const Header = () => {
       // An error happened.
       console.log(error)
     });
+  }
+
+  const handleGptSearchClick = ()=>{
+    dispatch(toggleGptSearchView())
+  }
+
+  const handleLanguageChange = (e)=>{
+    console.log(e.target.value)
+    dispatch(changeLang(e.target.value))
   }
 
   useEffect(()=>{
@@ -56,11 +69,29 @@ const Header = () => {
         />
 
         {user !== null &&
-          <button className='text-white'
-            onClick={handleSignOut}
-          >
-            Sign Out
-          </button>
+          <div className='space-x-5 mr-12'>
+            <button className='text-red-500 bg-white font-bold rounded-lg px-3 p-2'
+            onClick={handleGptSearchClick}
+            >
+              {showGptSearch ? 'Home' : 'GPT'}
+            </button>
+            <button className='text-white'
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </button>
+            {showGptSearch &&
+              <select
+                onClick={handleLanguageChange}
+              >
+                {
+                  SUPPORTED_LANG.map((lang)=>
+                    <option key={lang.identifier} value={lang.identifier}>{lang.title}</option>
+                  )
+                }
+              </select>
+            }
+          </div>
         }
 
     </div>
