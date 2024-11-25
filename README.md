@@ -32,15 +32,30 @@
         -movieCard
         -found out IMG TMDB URL
 -movieSlice=>
-    -upcomingMovie, topRatedMovies, popularMovies
+    -nowplayingmovies, upcomingMovie, topRatedMovies, popularMovies
 -useMOviesHook =>
-            -usePopularMovies
-            -useTopRatedMovies
-            -useUpcomingmovies
+        -useNowPlayingMovies
+        -usePopularMovies
+        -useTopRatedMovies
+        -useUpcomingmovies
+-MEMORIZATIONS=>
+    - if once data is once fetch and else if all ready present in store, then there is no need to make an API call    each times when componenet is render
+    - examples:- !nowPlayingMovies && getNowPlayingMovies() ---- in useNowPlayingMovies hook
+        -nowPlayingMovies is null then run the funcition.
 -GPT Page =>
     -Gpt Search bar
     -gptSlice, configSlice
     -feature = Multi Languages Selction In Header
+    -handleGptSearchClick button = 
+        -OPEN AI config,
+        -written a meaningfull gptQuery
+        -create a openAI result from provided query // list of suggested movies store as an array
+        -store it in gptSlice gptSearchMviesNameSuggestions
+    -searchTMDBMovie =
+        - run a loop/map for each suggested movies which is store as an array format.
+        - searchTMDBmovies fetch movies for every moviesName in map iterations.
+        - Promise.All = map interation returns a promises, if all promises completed then store it in array
+        - store the result in moviesResultArray.
 
 
 # Features
