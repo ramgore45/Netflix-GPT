@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
-import { checkValidateData } from '../utilis/validate'
+import { checkValidateData } from '../../utilis/validate'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { auth } from '../utilis/firbase'
+import { auth } from '../../utilis/firbase'
 import { useDispatch } from 'react-redux'
-import { addUser } from '../utilis/redux/userSlice'
-import Header from './Header'
-import { BackgroundImgUrl, USER_AVATAR } from '../utilis/constants'
+import { addUser } from '../../utilis/redux/slices/userSlice'
+import Header from '../commonComponents/Header'
+import { BackgroundImgUrl, USER_AVATAR } from '../../utilis/constants'
 
 const Login = () => {
 
@@ -147,4 +147,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

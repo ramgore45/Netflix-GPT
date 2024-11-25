@@ -15,6 +15,8 @@ export const API_GET_OPTION = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZDk1ODhhOTg0M2M0MWY5MzUyZjg2NjYzYmUxMmE0MiIsIm5iZiI6MTcyOTUxNjIwNi4xNjk3NTQsInN1YiI6IjY3MTY0ZjU5Y2VmMTQ2MjhmZWY2NDAzYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.E91mxFxrkkOalnn67inilqYYxhDtEict2h8IKq2mnxw'
+    Authorization: 'Bearer '+process.env.REACT_APP_TMDB_AUTH_TOKEN,
   }
 };
+
+export const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY || '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'

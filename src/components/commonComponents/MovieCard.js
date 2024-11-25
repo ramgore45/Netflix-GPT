@@ -1,9 +1,11 @@
 import React from 'react'
-import { MOVIE_IMG_CDN_URL } from '../utilis/constants'
+import { MOVIE_IMG_CDN_URL } from '../../utilis/constants'
 
 const MovieCard = ({movie}) => {
 
     const {original_title, poster_path} = movie
+
+    if(!poster_path) return null
 
   return (
     <div className='w-60 h-52'>

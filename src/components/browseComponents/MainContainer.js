@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import VideoBackground from './VideoBackground'
-import VideoTitle from './VideoTitle'
+import VideoBackground from '../commonComponents/VideoBackground'
+import VideoTitle from '../commonComponents/VideoTitle'
 
-const MainContainer = () => {
+const   MainContainer = () => {
 
     const nowPlayingMovies = useSelector((store)=> store.movies?.nowPlayingMovies)
 

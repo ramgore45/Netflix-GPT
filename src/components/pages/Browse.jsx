@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from './Header';
-import { useNowPlayingMovies, usePopularMovies, useTopRatedMovies, useUpcomingMovies } from '../customHooks/useMoviesHooks';
-import MainContainer from './MainContainer';
-import SecondaryContainer from './SecondaryContainer';
+import Header from '../commonComponents/Header';
+import { useNowPlayingMovies, usePopularMovies, useTopRatedMovies, useUpcomingMovies } from '../../customHooks/useMoviesHooks';
+import MainContainer from '../browseComponents/MainContainer';
+import SecondaryContainer from '../browseComponents/SecondaryContainer';
 import { useSelector } from 'react-redux';
-import GptSearch from './GptSearch';
+import GptSearch from '../gptPageComponents/GptSearch';
 
 const Browse = () => {
 

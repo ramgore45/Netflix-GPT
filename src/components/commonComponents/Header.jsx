@@ -1,13 +1,13 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { auth } from '../utilis/firbase'
+import { auth } from '../../utilis/firbase'
 import { useDispatch, useSelector } from 'react-redux'
-import { addUser, removeUser } from '../utilis/redux/userSlice'
-import { LOGO } from '../utilis/constants'
-import { toggleGptSearchView } from '../utilis/redux/gptSlice'
-import { SUPPORTED_LANG } from '../utilis/langConstants'
-import { changeLang } from '../utilis/redux/configSlice'
+import { addUser, removeUser } from '../../utilis/redux/slices/userSlice'
+import { LOGO } from '../../utilis/constants'
+import { toggleGptSearchView } from '../../utilis/redux/slices/gptSlice'
+import { SUPPORTED_LANG } from '../../utilis/langConstants'
+import { changeLang } from '../../utilis/redux/slices/configSlice'
 
 const Header = () => {
 
