@@ -19,4 +19,4 @@ export const API_GET_OPTION = {
   }
 };
 
-export const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY || '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'
+export const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY
