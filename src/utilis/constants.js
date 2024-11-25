@@ -18,5 +18,3 @@ export const API_GET_OPTION = {
     Authorization: 'Bearer '+process.env.REACT_APP_TMDB_AUTH_TOKEN,
   }
 };
-
-export const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY
