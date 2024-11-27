@@ -5,10 +5,13 @@ import MainContainer from '../browseComponents/MainContainer';
 import SecondaryContainer from '../browseComponents/SecondaryContainer';
 import { useSelector } from 'react-redux';
 import GptSearch from '../gptPageComponents/GptSearch';
+import LoadSpinner from '../commonComponents/LoadSpinner';
 
 const Browse = () => {
 
   const showGptSearch = useSelector((store)=>store.gpt.showGptSearch)
+  
+  const {trailerVideo, nowPlayingMovies}  = useSelector((store)=> store.movies)
 
   // created custom hook for fethching nowPlayingMovies and store in movieSlice
   useNowPlayingMovies()
@@ -21,13 +24,17 @@ const Browse = () => {
       <Header/>
         {
           showGptSearch ? <GptSearch/> : (
-            <>
-              {/*Main Container = section 1 = video banner section, background trailor */}
-              <MainContainer/>
+            trailerVideo && nowPlayingMovies ? (
+              <>
+                {/*Main Container = section 1 = video banner section, background trailor */}
+                <MainContainer/>
 
-              {/* SecondaryContainer = section 2 = many list of movies section */}
-              <SecondaryContainer/>
-            </>
+                {/* SecondaryContainer = section 2 = many list of movies section */}
+                <SecondaryContainer/>
+              </>
+            ) : (
+              <LoadSpinner/>
+            )
           )
         }
     </div>

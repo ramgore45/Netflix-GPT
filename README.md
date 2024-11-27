@@ -42,6 +42,7 @@
     - if once data is once fetch and else if all ready present in store, then there is no need to make an API call    each times when componenet is render
     - examples:- !nowPlayingMovies && getNowPlayingMovies() ---- in useNowPlayingMovies hook
         -nowPlayingMovies is null then run the funcition.
+-.env file => store SECRET KEYS
 -GPT Page =>
     -Gpt Search bar
     -gptSlice, configSlice
@@ -56,6 +57,7 @@
         - searchTMDBmovies fetch movies for every moviesName in map iterations.
         - Promise.All = map interation returns a promises, if all promises completed then store it in array
         - store the result in moviesResultArray.
+- Restructure/or structuring the the components.
 
 
 # Features

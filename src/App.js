@@ -7,8 +7,6 @@ import Body from './components/pages/Body';
 
 function App() {
 
-  console.log(OPENAI_API_KEY)
-
   return (
       <Provider store={appStore}>
         <div className="relative">

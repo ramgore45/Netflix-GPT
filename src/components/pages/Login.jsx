@@ -100,11 +100,11 @@ const Login = () => {
   return (
     <div className='text-white'>
         <Header/>
-        <img className='w-screen min-h-screen h-fit'
+        <img className='w-screen min-h-screen object-cover '
             src={BackgroundImgUrl} alt='bg-img'
         />
 
-        <form className='p-14 px-16 space-y-10 bg-black bg-opacity-70 absolute w-[35%] mx-auto top-[20%] left-0 right-0 z-0 rounded-3xl'
+        <form className='p-14 px-16 space-y-10 bg-black bg-opacity-70 absolute w-full md:w-[35%] mx-auto top-[20%] left-0 right-0 z-0 rounded-3xl'
             onSubmit={(e)=> e.preventDefault()}
         >
             <h1 className='text-4xl font-bold'>Sign In</h1>

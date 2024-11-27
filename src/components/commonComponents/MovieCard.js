@@ -8,8 +8,8 @@ const MovieCard = ({movie}) => {
     if(!poster_path) return null
 
   return (
-    <div className='w-60 h-52'>
-        <img className='w-60 hover:scale-105 transition-all duration-300 ease-in-out'
+    <div className='w-44 md:w-60 h-52'>
+        <img className='w-44 md:w-60 hover:scale-105 transition-all duration-300 ease-in-out'
             src={MOVIE_IMG_CDN_URL+poster_path} alt={original_title}
         />
     </div>
